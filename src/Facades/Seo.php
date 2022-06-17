@@ -11,6 +11,6 @@ class Seo extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'laravel-seo';
+        return \Fomvasss\Seo\Seo::class;
     }
 }
