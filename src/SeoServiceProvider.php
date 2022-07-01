@@ -3,30 +3,35 @@
 namespace Fomvasss\Seo;
 
 use Illuminate\Support\ServiceProvider;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Fomvasss\Seo\Commands\SeoCommand;
 
-class SeoServiceProvider extends ServiceProvider //extends PackageServiceProvider
+class SeoServiceProvider extends ServiceProvider
 {
-    public function configurePackage(Package $package): void
+
+    public function boot()
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
-        $package
-            ->name('laravel-seo')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_seos_table')
-            ->hasCommand(SeoCommand::class);
+        $this->publishes([
+            __DIR__.'/../config/seo.php' => config_path('seo.php'),
+        ]);
+
+        if (! class_exists('CreateSeoTable')) {
+            $this->publishes([
+                __DIR__.'/../database/migrations/create_seos_table.php.stub' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_seos_table.php'),
+            ], 'migrations');
+        }
+
+        $this->publishes([
+            __DIR__.'/../resources/views' => resource_path('views/vendor/seo'),
+        ]);
+
+        $this->loadViewsFrom(
+            __DIR__.'/../resources/views', 'seo'
+        );
     }
 
     public function register()
     {
-        //$this->mergeConfigFrom(__DIR__.'/../config/seo.php', 'seo');
+        $this->mergeConfigFrom(__DIR__.'/../config/seo.php', 'seo');
 
         $this->app->singleton(Seo::class);
     }
