@@ -1,0 +1,43 @@
+{
+    "name": "fomvasss/laravel-seo",
+    "description": "Laravel SEO package",
+    "keywords": [
+        "fomvasss",
+        "laravel",
+        "seo",
+        "metatag",
+        "laravel-seo"
+    ],
+    "homepage": "https://github.com/fomvasss/laravel-seo",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "fomvasss",
+            "email": "fomvasss@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "illuminate/contracts": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fomvasss\\Seo\\": "src",
+            "Fomvasss\\Seo\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Fomvasss\\Seo\\SeoServiceProvider"
+            ],
+            "aliases": {
+                "Seo": "Fomvasss\\Seo\\Facades\\Seo"
+            }
+        }
+    }
+}
