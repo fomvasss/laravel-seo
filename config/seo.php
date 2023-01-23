@@ -59,13 +59,13 @@ return [
     ],
 
     'html_formatters' => [
-        'common' => \App\Support\Seo\HtmlFormatters\Common::class,
-        'og' => \App\Support\Seo\HtmlFormatters\OpenGraph::class,
-        'twitter' => \App\Support\Seo\HtmlFormatters\Twitter::class,
+        'common' => \Fomvasss\Seo\HtmlFormatters\Common::class,
+        'og' => \Fomvasss\Seo\HtmlFormatters\OpenGraph::class,
+        'twitter' => \Fomvasss\Seo\HtmlFormatters\Twitter::class,
     ],
 
     'modifiers' => [
-        'stripTags' => \App\Support\Seo\TagModifiers\StripTagsModifier::class
+        'stripTags' => \Fomvasss\Seo\TagModifiers\StripTagsModifier::class
     ],
 
     /* -----------------------------------------------------------------
@@ -85,5 +85,5 @@ return [
      |  The default Model meta-tag
      | -----------------------------------------------------------------
      */
-    'model' => \App\Models\Seo::class,
+    'model' => \Fomvasss\Seo\Models\Seo::class,
 ];
