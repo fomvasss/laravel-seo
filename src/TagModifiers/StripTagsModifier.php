@@ -2,10 +2,10 @@
 
 namespace Fomvasss\Seo\TagModifiers;
 
-final class StripTagsModifier
+class StripTagsModifier
 {
-    public function modify($key, $value): string
+    public function modify(string $key, string $value): string
     {
-        return strip_tags($value);
+        return preg_replace('/\s\s+/', ' ', html_entity_decode(strip_tags($value)));
     }
 }
