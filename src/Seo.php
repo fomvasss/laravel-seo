@@ -97,7 +97,7 @@ class Seo
         $pathTags = [];
         if ($this->path) {
             $model = config('seo.model');
-            if ($seoPathModel = $model::byPath($this->group)->first()) {
+            if ($seoPathModel = $model::byPath($this->path, $this->group)->first()) {
                 $pathTags = $seoPathModel->getSeoTags();
                 $pathTags = array_filter($pathTags);
             }

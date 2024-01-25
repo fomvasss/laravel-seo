@@ -17,10 +17,10 @@ class Seo extends Model
         'tags' => 'array',
     ];
 
-    public function scopeByPath(Builder $builder, ?string $group = null)
+    public function scopeByPath(Builder $builder, string $path, ?string $group = null)
     {
-        $builder->where('path', $this->path)
-            ->when($group, fn($s) => $s->where('group', $group)->orWhere('group', null));
+        $builder->where('path', $path)
+            ->when($group, fn($s) => $s->where(fn($s2) => $s2->where('group', $group)->orWhere('group', null)));
     }
 
     public function getSeoTags(): array
