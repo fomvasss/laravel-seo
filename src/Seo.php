@@ -79,6 +79,16 @@ class Seo
     }
 
     /**
+     * @return Model|null
+     */
+    public function getSeopath(): ?Model
+    {
+        $model = config('seo.model');
+
+        return $model::byPath($this->path, $this->group)->first();
+    }
+
+    /**
      * @return array
      */
     protected function getRawTags(): array
@@ -96,8 +106,7 @@ class Seo
 
         $pathTags = [];
         if ($this->path) {
-            $model = config('seo.model');
-            if ($seoPathModel = $model::byPath($this->path, $this->group)->first()) {
+            if ($seoPathModel = $this->getSeopath()) {
                 $pathTags = $seoPathModel->getSeoTags();
                 $pathTags = array_filter($pathTags);
             }
