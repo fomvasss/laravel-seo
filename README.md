@@ -97,6 +97,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Credits
 
 - [fomvasss](https://github.com/fomvasss)
+- [Google docs] (https://developers.google.com/search/docs/crawling-indexing/special-tags)
 
 ## License
 
