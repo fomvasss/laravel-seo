@@ -85,7 +85,11 @@ class Seo
     {
         $model = config('seo.model');
 
-        return $model::byPath($this->path, $this->group)->first();
+        if ($this->path) {
+            return $model::byPath($this->path, $this->group)->first();
+        } 
+        
+        return null;
     }
 
     /**
