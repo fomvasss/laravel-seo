@@ -10,6 +10,16 @@
     ],
     "homepage": "https://github.com/fomvasss/laravel-seo",
     "license": "MIT",
+    "funding": [
+        {
+            "type": "custom",
+            "url": "https://send.monobank.ua/jar/5xsqtHvVrY"
+        },
+        {
+            "type": "ko_fi",
+            "url": "https://ko-fi.com/fomvasss"
+        }
+    ],
     "authors": [
         {
             "name": "fomvasss",
