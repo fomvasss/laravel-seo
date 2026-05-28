@@ -2,9 +2,7 @@
 
 namespace Fomvasss\Seo;
 
-use Fomvasss\Seo;
 use Illuminate\Support\ServiceProvider;
-use Fomvasss\Seo\Commands\SeoCommand;
 
 class SeoServiceProvider extends ServiceProvider
 {

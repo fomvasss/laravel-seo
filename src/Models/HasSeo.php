@@ -2,7 +2,7 @@
 
 namespace Fomvasss\Seo\Models;
 
-use Fomvasss\Models\Seo;
+use Fomvasss\Seo\Models\Seo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 

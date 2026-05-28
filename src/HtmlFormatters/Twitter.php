@@ -41,6 +41,6 @@ class Twitter
 
     public function default(string $key, string $value): string
     {
-        return '<meta property="twitter:' . $key . '" content="' . $value . '">';
+        return '<meta name="twitter:' . $key . '" content="' . $value . '">';
     }
 }

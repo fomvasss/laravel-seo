@@ -6,11 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Seo
 {
+    /** @var string|null */
     protected string|null $group = null;
+    
+    /** @var string|null */
     protected string|null $path = null;
+    
+    /** @var Model|null */
     protected Model|null $model = null;
+    
+    /** @var array */
     protected array $default = [];
+    
+    /** @var array */
     protected array $tags = [];
+
+    /** @var array<string, Model|null> */
+    protected array $seopathCache = [];
 
     /**
      * @param string $group
@@ -38,7 +50,7 @@ class Seo
      * @param string|null $path
      * @return $this
      */
-    public function usePath(?string $path = null)
+    public function usePath(?string $path = null): self
     {
         $path = $path ?: \Illuminate\Support\Facades\Request::path();
 
@@ -85,11 +97,20 @@ class Seo
     {
         $model = config('seo.model');
 
+        $key = ($this->path ?? '') . '|' . ($this->group ?? '');
+
+        if (array_key_exists($key, $this->seopathCache)) {
+            return $this->seopathCache[$key];
+        }
+
+        $res = null;
         if ($this->path) {
-            return $model::byPath($this->path, $this->group)->first();
-        } 
-        
-        return null;
+            $res = $model::byPath($this->path, $this->group)->first();
+        }
+
+        $this->seopathCache[$key] = $res;
+
+        return $res;
     }
 
     /**
@@ -179,7 +200,7 @@ class Seo
 
         $res = [];
         foreach ($this->getTags() as $key => $value) {
-            $type = $allowedTags[$key]['type'];
+            $type = $allowedTags[$key]['type'] ?? null;
             if (!empty($allowedTags[$key]['hide'])) {
                 continue;
             }

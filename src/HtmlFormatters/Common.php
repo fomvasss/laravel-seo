@@ -34,6 +34,11 @@ class Common
         return '<meta name="robots" content="' . $value . '" />';
     }
 
+    public function fb_app_id(string $value): string
+    {
+        return '<meta property="fb:app_id" content="' . $value . '" />';
+    }
+
     public function fb_page_id(string $value): string
     {
         return '<meta property="fb:page_id" content="' . $value . '" />';
